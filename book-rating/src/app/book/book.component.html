@@ -6,6 +6,7 @@
       <h2>
         {{ book.title }}
         <span class="badge bg-secondary">{{ book.rating }}</span>
+        {{ '⭐️'.repeat(book.rating) }}
       </h2>
     </div>
     <p>{{ book.description }}</p>
