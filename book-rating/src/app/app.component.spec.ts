@@ -1,9 +1,17 @@
-import { NO_ERRORS_SCHEMA } from '@angular/core';
+import { Component, NO_ERRORS_SCHEMA } from '@angular/core';
 import { TestBed } from '@angular/core/testing';
 import { RouterTestingModule } from '@angular/router/testing';
 import { AppComponent } from './app.component';
 import { BookComponent } from './books/book/book.component';
 import { DashboardComponent } from './books/dashboard/dashboard.component';
+
+@Component({
+  selector: 'br-dashboard',
+  template: '',
+})
+export class DummyDashboardComponent {
+}
+
 
 fdescribe('AppComponent', () => {
   beforeEach(async () => {
@@ -13,10 +21,11 @@ fdescribe('AppComponent', () => {
       ],
       declarations: [
         AppComponent,
+        DummyDashboardComponent   // Unit Test
         // DashboardComponent,    //  ---> Integration-Test
         // BookComponent
       ],
-      schemas: [NO_ERRORS_SCHEMA]
+      // schemas: [NO_ERRORS_SCHEMA]
     }).compileComponents();
   });
 
