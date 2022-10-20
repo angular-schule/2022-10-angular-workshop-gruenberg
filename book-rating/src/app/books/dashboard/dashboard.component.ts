@@ -25,5 +25,5 @@ export class DashboardComponent {
     rating: 1
   }];
 
-
+ 
 }

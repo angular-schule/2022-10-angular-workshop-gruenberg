@@ -10,5 +10,18 @@
       </h2>
     </div>
     <p>{{ book.description }}</p>
+
+    <!-- WORST PRACTICE
+    TODO: FIX ME :D
+
+    1. Logik Template
+    2. Single Responsibility Prinzip verletzt
+    3. Objekt wurde mutiert
+
+
+    -->
+    <button class="btn btn-primary me-2" (click)="book.rating = book.rating - 1">-1</button>
+    <button class="btn btn-primary" (click)="book.rating = book.rating + 1">+1</button>
+
   </div>
 </div>
