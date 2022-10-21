@@ -30,6 +30,10 @@ export class DashboardComponent {
 
   doRateUp(book: Book) {
     const ratedBook = this.br.rateUp(book);
+    // const ratedBook = {
+    //   ...book,
+    //   rating: book.rating < 5 ? book.rating + 1 : 5
+    // }
     this.updateAndSortBooks(ratedBook);
   }
 
