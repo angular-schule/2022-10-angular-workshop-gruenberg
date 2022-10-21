@@ -1,10 +1,11 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { ChangeDetectionStrategy, Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Book } from '../shared/book';
 
 @Component({
   selector: 'br-book',
   templateUrl: './book.component.html',
-  styleUrls: ['./book.component.scss']
+  styleUrls: ['./book.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class BookComponent {
 
@@ -18,10 +19,10 @@ export class BookComponent {
   rateDown = new EventEmitter<Book>();
 
   @Input()
-  isRateUpAllowed = (b: Book) => false;
+  isRateUpAllowed = (b: Book) => true;
 
   @Input()
-  isRateDownAllowed = (b: Book) => false;
+  isRateDownAllowed = (b: Book) => true;
 
   doRateUp() {
     if (this.book) {
@@ -33,5 +34,9 @@ export class BookComponent {
     if (this.book) {
       this.rateDown.next(this.book);
     }
+  }
+
+  log() {
+    console.log(+new Date());
   }
 }

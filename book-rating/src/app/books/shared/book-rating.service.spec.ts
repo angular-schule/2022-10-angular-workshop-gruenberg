@@ -39,7 +39,7 @@ describe('BookRatingService', () => {
   });
 
   // TODO: remove me later when we have Redux
-  it('should always return a new book instance (assuming immutability', () => {
+  it('should return a new book instance if required (assuming immutability', () => {
     const ratedBook = service.rateUp(book);
     expect(ratedBook).not.toBe(book);
 

@@ -1,15 +1,19 @@
-import { Component, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { Book } from '../shared/book';
 import { BookRatingService } from '../shared/book-rating.service';
 
 @Component({
   selector: 'br-dashboard',
   templateUrl: './dashboard.component.html',
-  styleUrls: ['./dashboard.component.scss']
+  styleUrls: ['./dashboard.component.scss'],
+   // VORSICHT: BUG sobald wir HTTP einführen!
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class DashboardComponent {
 
-  constructor(public br: BookRatingService) {}
+  constructor(public br: BookRatingService) {
+    // setTimeout(() => this.books = [], 3000)
+  }
 
   books: Book[] = [{
     isbn: '000',

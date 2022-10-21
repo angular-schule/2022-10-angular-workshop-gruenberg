@@ -14,5 +14,7 @@
     <button [disabled]="!isRateDownAllowed(book)" class="btn btn-primary me-2" (click)="doRateDown()">-1</button>
     <button [disabled]="!isRateUpAllowed(book)" class="btn btn-primary" (click)="doRateUp()">+1</button>
 
+    {{ log() }}
+
   </div>
 </div>
