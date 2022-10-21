@@ -9,7 +9,7 @@ import { BookRatingService } from '../shared/book-rating.service';
 })
 export class DashboardComponent {
 
-  constructor(private br: BookRatingService) {}
+  constructor(public br: BookRatingService) {}
 
   books: Book[] = [{
     isbn: '000',
@@ -36,6 +36,10 @@ export class DashboardComponent {
   doRateDown(book: Book) {
     const ratedBook = this.br.rateDown(book);
     this.updateAndSortBooks(ratedBook);
+  }
+
+  fixMyScopeRateUpAllowed() {
+    return (book: Book) => this.br.isRateUpAllowed(book);
   }
 
   updateAndSortBooks(ratedBook: Book) {

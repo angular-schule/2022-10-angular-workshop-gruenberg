@@ -3,6 +3,8 @@
   [book]="b"
   (rateUp)="doRateUp($event)"
   (rateDown)="doRateDown($event)"
+  [isRateUpAllowed]="fixMyScopeRateUpAllowed()"
+  [isRateDownAllowed]="br.isRateDownAllowed"
 ></br-book>
 
 <hr>

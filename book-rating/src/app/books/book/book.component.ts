@@ -17,6 +17,12 @@ export class BookComponent {
   @Output()
   rateDown = new EventEmitter<Book>();
 
+  @Input()
+  isRateUpAllowed = (b: Book) => false;
+
+  @Input()
+  isRateDownAllowed = (b: Book) => false;
+
   doRateUp() {
     if (this.book) {
       this.rateUp.next(this.book);
