@@ -8,11 +8,11 @@
       class="feedback-error">Die ISBN ist ungültig:
     </div>
 
-    <div *ngIf="hasError2(c.isbn, 'required')"
+    <div *ngIf="hasErrorDetail(c.isbn, 'required')"
       class="feedback-error">Bitte geben Sie einen Text ein.
     </div>
 
-    <div *ngIf="hasError2(c.isbn, 'minlength')"
+    <div *ngIf="hasErrorDetail(c.isbn, 'minlength')"
       class="feedback-error">Bitte geben Sie mindestens 3 Zeichen ein.
     </div>
 

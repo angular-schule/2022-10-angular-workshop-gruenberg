@@ -1,14 +1,27 @@
 <br-book-form
   (create)="addBook($event)"
+  (edit)="changeBook($event)"
+  [book]="selectedBook"
 ></br-book-form>
 
-<br-book
-  *ngFor="let b of books"
-  [book]="b"
-  (rateUp)="doRateUp($event)"
-  (rateDown)="doRateDown($event)"
-></br-book>
+<ng-container *ngFor="let b of books">
+
+  <br-book
+    (rateUp)="doRateUp($event)"
+    (rateDown)="doRateDown($event)"
+    (edit)="changeToEditMode($event)"
+    [isRateDownAllowed]="br.isRateDownAllowed"
+    [isRateUpAllowed]="br.isRateDownAllowed"
+    [book]="b"></br-book>
+
+</ng-container>
+
+<div *ngIf="books.length === 0">
+  Keine Bücher vorhanden
+</div>
 
 <hr>
 
-Anzahl der Bücher: {{ books.length }}
+<p>
+  Anzahl der Bücher: {{ books.length }}
+</p>

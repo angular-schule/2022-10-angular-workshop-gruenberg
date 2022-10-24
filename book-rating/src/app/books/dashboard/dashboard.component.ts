@@ -14,6 +14,7 @@ import { BookStoreService } from '../shared/book-store.service';
 export class DashboardComponent {
 
   books: Book[] = [];
+  selectedBook?: Book;
 
   constructor(public br: BookRatingService, private bs: BookStoreService) {
     this.bs.getBooks().subscribe(books => this.books = books)
@@ -41,5 +42,14 @@ export class DashboardComponent {
 
   addBook(newBook: Book) {
     this.books = [...this.books, newBook];
+  }
+
+  changeBook(changeBook: Book): void {
+    this.updateAndSortBooks(changeBook);
+    this.selectedBook = undefined;
+  }
+
+  changeToEditMode(book: Book): void {
+    this.selectedBook = book;
   }
 }
