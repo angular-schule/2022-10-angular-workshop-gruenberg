@@ -1,13 +1,14 @@
-import { Component, EventEmitter, OnInit, Output } from '@angular/core';
-import { Form, FormControl, FormGroup, Validators } from '@angular/forms';
+import { Component, EventEmitter, Output } from '@angular/core';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
+
 import { Book } from '../shared/book';
 
 @Component({
-  selector: 'br-book-create',
-  templateUrl: './book-create.component.html',
-  styleUrls: ['./book-create.component.scss']
+  selector: 'br-book-form',
+  templateUrl: './book-form.component.html',
+  styleUrls: ['./book-form.component.scss']
 })
-export class BookCreateComponent  {
+export class BookFormComponent  {
 
   @Output()
   create = new EventEmitter<Book>()

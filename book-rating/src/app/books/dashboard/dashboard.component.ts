@@ -1,4 +1,5 @@
-import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
+
 import { Book } from '../shared/book';
 import { BookRatingService } from '../shared/book-rating.service';
 import { BookStoreService } from '../shared/book-store.service';
@@ -18,7 +19,6 @@ export class DashboardComponent {
     this.bs.getBooks().subscribe(books => this.books = books)
   }
 
-
   doRateUp(book: Book) {
     const ratedBook = this.br.rateUp(book);
     // const ratedBook = {
@@ -31,10 +31,6 @@ export class DashboardComponent {
   doRateDown(book: Book) {
     const ratedBook = this.br.rateDown(book);
     this.updateAndSortBooks(ratedBook);
-  }
-
-  fixMyScopeRateUpAllowed() {
-    return (book: Book) => this.br.isRateUpAllowed(book);
   }
 
   updateAndSortBooks(ratedBook: Book) {

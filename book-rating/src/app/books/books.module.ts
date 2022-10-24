@@ -5,7 +5,7 @@ import { BooksRoutingModule } from './books-routing.module';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { BookComponent } from './book/book.component';
 import { ReactiveFormsModule } from '@angular/forms';
-import { BookCreateComponent } from './book-create/book-create.component';
+import { BookFormComponent } from './book-form/book-form.component';
 import { HttpClientModule } from '@angular/common/http';
 
 
@@ -13,7 +13,7 @@ import { HttpClientModule } from '@angular/common/http';
   declarations: [
     DashboardComponent,
     BookComponent,
-    BookCreateComponent,
+    BookFormComponent,
     // und weitere wie RatingComponent, RatingPipe
   ],
   exports: [
