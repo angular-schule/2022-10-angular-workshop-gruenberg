@@ -30,6 +30,7 @@
 
   <button
     [disabled]="bookForm.invalid"
-    type="submit" class="btn btn-primary mb-4">Senden</button>
+    type="submit" class="btn btn-primary mb-4">
+    {{ selectedBook ? 'Bearbeiten' : ' Neu Erstellen' }} </button>
 
 </form>
