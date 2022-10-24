@@ -1,0 +1,26 @@
+<form [formGroup]="bookForm" >
+
+  <div class="form-group">
+    <label for="isbn">ISBN</label>
+    <input [formControl]="c.isbn" type="text" class="form-control" id="isbn">
+
+    <div *ngIf="false"
+      class="feedback-error">Die ISBN ist ungültig.
+    </div>
+
+  </div>
+
+  <div class="form-group">
+    <label for="title">Titel</label>
+    <input [formControl]="c.title" type="text" class="form-control" id="title">
+  </div>
+
+  <div class="form-group">
+    <label for="description">Beschreibung</label>
+    <textarea [formControl]="c.description" class="form-control" id="description"></textarea>
+  </div>
+
+  <button
+    type="submit" class="btn btn-primary mb-4">Senden</button>
+
+</form>
