@@ -1,0 +1,18 @@
+<div class="card">
+  <div class="card-header">
+    <div class="text-center">
+      <strong>{{ name }}</strong>
+      <span class="badge bg-success ms-2" *ngIf="online">Online</span>
+      <span class="badge bg-danger ms-2" *ngIf="!online">Offline</span>
+    </div>
+  </div>
+  <div class="card-body">
+    <form (ngSubmit)="sendMessage()" [formGroup]="form">
+      <input class="form-control form-control-lg" formControlName="message">
+      <div class="d-grid gap-1">
+        <button type="submit" class="btn btn-sm btn-success mt-2">Send</button>
+        <button type="button" class="btn btn-sm btn-outline-danger" (click)="leaveChat()">Leave</button>
+      </div>
+    </form>
+  </div>
+</div>

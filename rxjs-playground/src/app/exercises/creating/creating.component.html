@@ -1,0 +1,17 @@
+<h3>Creating Observables</h3>
+
+<ol class="pl-4 pt-2">
+  <li>
+    Erstelle ein eigenes Observable und abonniere den Datenstrom.<br>
+    Probiere dazu die verschiedenen Creation Functions aus: <code>of()</code>, <code>from()</code>, <code>timer()</code>, <code>interval()</code>.
+  </li>
+  <li>Implementiere außerdem ein Observable manuell, indem du den Konstruktor <code>new Observable()</code> nutzt und eine Producer-Funktion selbst implementierst.</li>
+</ol>
+
+<p>
+  <strong>Tipps:</strong><br>
+  Zum Abonnieren kannst du einen (partiellen) Observer oder ein einzelnes <code>next</code>-Callback verwenden.<br>
+  Du kannst die Methode <code>this.log()</code> verwenden, um eine Nachricht im schwarzen Fenster auszugeben.
+</p>
+
+<rxw-history [logStream]="logStream$"></rxw-history>

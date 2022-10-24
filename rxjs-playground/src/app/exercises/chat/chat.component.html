@@ -1,0 +1,19 @@
+<div class="row">
+  <div class="col-4">
+    <rxw-chat-window name="Julia" (send)="msgRaw.julia$.next($event)" (leave)="msgRaw.julia$.complete()"></rxw-chat-window>
+  </div>
+  <div class="col-4">
+      <rxw-chat-window name="Georg" (send)="msgRaw.georg$.next($event)" (leave)="msgRaw.georg$.complete()"></rxw-chat-window>
+  </div>
+  <div class="col-4">
+      <rxw-chat-window name="John" (send)="msgRaw.john$.next($event)" (leave)="msgRaw.john$.complete()"></rxw-chat-window>
+  </div>
+</div>
+
+
+<rxw-history [logStream]="logStream$" class="mt-3"></rxw-history>
+
+<p class="mt-4">
+  Führe die Nachrichten aller Teilnehmenden in einem Datenstrom zusammen.<br>
+  Abonniere hierfür den Datenstrom und gib die Nachrichten mit der Methode <code>this.log()</code> aus.
+</p>

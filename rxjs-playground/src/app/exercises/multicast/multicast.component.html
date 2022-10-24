@@ -1,0 +1,26 @@
+<button class="btn btn-primary me-2" (click)="addListener()">Add listener</button>
+<button class="btn btn-outline-primary" (click)="addConsoleListener()">Add console listener</button>
+
+<div class="row">
+  <div class="col-3 mt-3" *ngFor="let l of listeners">
+    <div class="card">
+      <div class="card-header">
+        <div class="text-center">
+          <strong>{{ l }}</strong>
+        </div>
+      </div>
+      <div class="card-body text-center">
+        <h4>{{ measureValues$ | async | number:'1.4-4' }}</h4>
+      </div>
+    </div>
+  </div>
+</div>
+
+<rxw-history [logStream]="logStream$" class="mt-3"></rxw-history>
+
+<ul class="mt-4">
+  <li>Nutze den Service <code>MeasureValuesService</code>, um Livedaten zu empfangen und schreibe sie in das Property <code>measureValues$</code>.</li>
+  <li>Verwende dann <a href="https://rxjs.dev/api/operators/share" target="_blank"><code>share()</code></a>, um das Observable "heiß" zu machen.
+  <li>Setze das gleiche dann mit verschiedenen Subjects um: <code>Subject</code>, <code>BehaviorSubject</code>, <code>ReplaySubject</code>.</li>
+  <li>Vorsicht: Dieser Code hat einen potenziellen Memory Leak, weil die manuelle Subscriptions nicht beendet werden.</li>
+</ul>
