@@ -6,6 +6,7 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { BookComponent } from './book/book.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { BookCreateComponent } from './book-create/book-create.component';
+import { HttpClientModule } from '@angular/common/http';
 
 
 @NgModule({
@@ -21,7 +22,8 @@ import { BookCreateComponent } from './book-create/book-create.component';
   imports: [
     CommonModule,
     BooksRoutingModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    // HttpClientModule --- NIEMALS HIER
   ]
 })
 export class BooksModule { }
