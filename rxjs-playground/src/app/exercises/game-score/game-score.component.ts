@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { Subject, ReplaySubject, scan, reduce } from 'rxjs';
+import { Subject, ReplaySubject, scan, reduce, tap } from 'rxjs';
 
 @Component({
   selector: 'rxw-game-score',
@@ -21,7 +21,14 @@ export class GameScoreComponent {
 
     /******************************/
 
-    this.score$
+    this.score$.pipe(
+      tap(console.log),
+      scan((acc, item) => acc + item, 0)
+    ).subscribe(score => this.currentScore = score);
+
+    this.score$.pipe(
+      reduce((acc, item) => acc + item, 0)
+    ).subscribe(score => this.finalScore = score);
 
 
     /******************************/
