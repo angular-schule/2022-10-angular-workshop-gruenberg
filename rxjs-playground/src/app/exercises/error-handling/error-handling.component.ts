@@ -26,8 +26,12 @@ export class ErrorHandlingComponent {
     this.es.randomError().pipe(
 
       /******************************/
+      retry({
+        count: 3,
+        delay: 1000,
+      })
 
-      
+
       /******************************/
 
     ).subscribe({
