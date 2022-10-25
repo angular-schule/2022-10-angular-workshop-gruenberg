@@ -22,7 +22,34 @@ export class CreatingComponent {
 
     /******************************/
 
-    
+    // Observer
+    const observer = {
+      next: (e: string) => this.log(e),
+      error: (err: any) => this.log('❌ ERROR ' + err),
+      complete: () => this.log('✅ COMPLETE')
+    }
+
+    // Observable
+    // const observable = of('🙂', '😎', '😁');
+    const observable = new Observable<string>(subscriber => {
+      subscriber.next('😀');
+      const a = setTimeout(() => { subscriber.next('😎'); console.log('Zombie Code 🧟‍♂️') }, 1000);
+      const b = setTimeout(() => { subscriber.next('😵‍💫');  console.log('Zombie Code 🧟‍♂️') }, 2000);
+      const c = setTimeout(() => subscriber.error('BOOH! FEHLER!'), 3000);
+
+      return () => {
+        console.log('Es wurde unscubscribed! Wir sollten die Zombies killen!');
+        clearTimeout(a);
+        clearTimeout(b);
+        clearTimeout(c);
+      }
+    });
+
+    // Subscription
+    const subscription = observable.subscribe(observer);
+    setTimeout(() => subscription.unsubscribe(), 900);
+
+
     /******************************/
   }
 
