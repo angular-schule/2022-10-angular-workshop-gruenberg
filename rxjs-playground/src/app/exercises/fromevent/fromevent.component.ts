@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { fromEvent, map, startWith, debounceTime } from 'rxjs';
+import { fromEvent, map, startWith, debounceTime, pipe } from 'rxjs';
 
 @Component({
   selector: 'rxw-fromevent',
@@ -20,7 +20,15 @@ export class FromeventComponent {
 
     /******************************/
 
-    
+    fromEvent(window, 'resize').pipe(
+
+      // pure!
+      map(event => (event.target as Window).innerWidth)
+
+      // impure
+      // map(() => window.innerWidth)
+    ).subscribe(e => console.log(e));
+
     /******************************/
   }
 
