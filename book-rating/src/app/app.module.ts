@@ -17,7 +17,7 @@ import { BooksModule } from './books/books.module';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    BooksModule,
+    // BooksModule,  // wegen Lazy Loading
     HttpClientModule // IMMER NUR IM AppModule
   ],
   providers: [],
