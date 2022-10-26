@@ -18,39 +18,39 @@ export class DashboardComponent {
   selectedBook?: Book;
 
   constructor(public br: BookRatingService, private bs: BookStoreService) {
-    this.bs.getBooks().subscribe(books => this.books = books)
+    // this.bs.getBooks().subscribe(books => this.books = books)
   }
 
   doRateUp(book: Book) {
-    const ratedBook = this.br.rateUp(book);
-    // const ratedBook = {
-    //   ...book,
-    //   rating: book.rating < 5 ? book.rating + 1 : 5
-    // }
-    this.updateAndSortBooks(ratedBook);
+    // const ratedBook = this.br.rateUp(book);
+    // // const ratedBook = {
+    // //   ...book,
+    // //   rating: book.rating < 5 ? book.rating + 1 : 5
+    // // }
+    // this.updateAndSortBooks(ratedBook);
   }
 
   doRateDown(book: Book) {
-    const ratedBook = this.br.rateDown(book);
-    this.updateAndSortBooks(ratedBook);
+    // const ratedBook = this.br.rateDown(book);
+    // this.updateAndSortBooks(ratedBook);
   }
 
   updateAndSortBooks(ratedBook: Book) {
-    this.books = this.books
-      .map(b => ratedBook.isbn === b.isbn ? ratedBook : b)
-      .sort((a, b) => b.rating - a.rating)
+    // this.books = this.books
+    //   .map(b => ratedBook.isbn === b.isbn ? ratedBook : b)
+    //   .sort((a, b) => b.rating - a.rating)
   }
 
   addBook(newBook: Book) {
-    this.books = [...this.books, newBook];
+    // this.books = [...this.books, newBook];
   }
 
   changeBook(changeBook: Book): void {
-    this.updateAndSortBooks(changeBook);
-    this.selectedBook = undefined;
+    // this.updateAndSortBooks(changeBook);
+    // this.selectedBook = undefined;
   }
 
   changeToEditMode(book: Book): void {
-    this.selectedBook = book;
+    // this.selectedBook = book;
   }
 }
