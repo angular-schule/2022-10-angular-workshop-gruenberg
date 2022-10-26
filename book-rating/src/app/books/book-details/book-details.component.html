@@ -1,9 +1,11 @@
-<h1>{{ (book$ | async)?.title }}</h1>
+<ng-container *ngIf="book$ | async as book">
+  <h1>{{ book.title }}</h1>
 
-<p *ngIf="showDetails">
-  Details:
-  {{ (book$ | async)?.description }}
-</p>
+  <p *ngIf="showDetails">
+    Details:
+    {{ book.description }}
+  </p>
+</ng-container>
 
 <button (click)="showDetails = !showDetails">Toggle Details</button>
 
@@ -11,3 +13,5 @@
 
 <a routerLink="/books/9783864907791">Gehe zu Anguar</a><br>
 <a routerLink="/books/9783960091417">Gehe zu GitHub</a><br>
+<a routerLink="/books/404">Gehe zu Fehler</a><br>
+
