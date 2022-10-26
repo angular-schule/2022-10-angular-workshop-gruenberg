@@ -7,6 +7,7 @@ import { BookComponent } from './book/book.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { BookFormComponent } from './book-form/book-form.component';
 import { HttpClientModule } from '@angular/common/http';
+import { BookDetailsComponent } from './book-details/book-details.component';
 
 
 @NgModule({
@@ -14,6 +15,7 @@ import { HttpClientModule } from '@angular/common/http';
     DashboardComponent,
     BookComponent,
     BookFormComponent,
+    BookDetailsComponent,
     // und weitere wie RatingComponent, RatingPipe
   ],
   exports: [

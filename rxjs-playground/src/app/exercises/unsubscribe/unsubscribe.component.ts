@@ -1,22 +1,44 @@
-import { ChangeDetectionStrategy, Component, OnDestroy } from '@angular/core';
-import { Subject, ReplaySubject, timer, Subscription, takeWhile, takeUntil, tap, of, Observable } from 'rxjs';
+import { Component, OnDestroy } from '@angular/core';
+import { Subject, ReplaySubject, timer, Subscription, takeWhile, takeUntil, take } from 'rxjs';
 
 @Component({
   selector: 'rxw-unsubscribe',
   templateUrl: './unsubscribe.component.html',
-  changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class UnsubscribeComponent {
+export class UnsubscribeComponent implements OnDestroy {
 
-  interval$?: Observable<number> = of(0);
+  logStream$ = new ReplaySubject<string | number>();
 
-  reset() {
-    this.interval$ = timer(0, 1000).pipe(
-      tap(console.log)
-    );
+  /**
+   * Öffne die Browser-Console: Dort siehst Du den Output eines Observables, das jede Sekunde einen Wert generiert.
+   * Navigiere zurück auf die Startseite und beobachte die Console:
+   * Die Subscription läuft weiter. Wir haben einen klassischen Memory Leak erzeugt ...
+   *
+   * Sorge dafür, dass die Subscription in der Methode ngOnDestroy() beendet wird!
+   * Sie wird beim Buttonklick und beim Wegnavigieren ausgelöst.
+   *
+   * Es gibt noch weitere Wege, das Problem zu lösen ...
+   */
+  constructor() {
+    const interval$ = timer(0, 1000);
+
+    interval$.pipe(
+
+      take(1)
+
+    ).subscribe({
+      next: e => this.log(e),
+      error: err => this.log('❌ ERROR: ' + err),
+      complete: () => this.log('✅ COMPLETE')
+    });
   }
 
-  stop() {
-    this.interval$ = of(0);
+  ngOnDestroy() {
+    this.logStream$.next('DESTROY');
+  }
+
+  log(msg: string | number) {
+    console.log(msg);
+    this.logStream$.next(msg);
   }
 }

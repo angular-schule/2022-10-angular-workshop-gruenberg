@@ -26,12 +26,20 @@ export class ErrorHandlingComponent {
     this.es.randomError().pipe(
 
       /******************************/
-      retry({
-        count: 3,
-        delay: 1000,
-      })
+      // Versuche den Fehler zu fangen
+      // retry({
+      //   count: 3,
+      //   delay: 1000
+      // }),
 
+      // Variante: Eigenen Fehler werfen
+      catchError(_ => throwError(() => "Fehler. Probieren Sie es erneut!")),
 
+      // Variante: Fehler schlucken
+      // catchError(_ => of('its ok')),
+
+      // Ignorieren
+      // catchError(_ => EMPTY),
       /******************************/
 
     ).subscribe({

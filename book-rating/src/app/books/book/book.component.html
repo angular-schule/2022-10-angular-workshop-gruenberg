@@ -14,7 +14,8 @@
 
     <button [disabled]="!isRateDownAllowed(book)" class="btn btn-primary me-2" (click)="doRateDown()">-1</button>
     <button [disabled]="!isRateUpAllowed(book)" class="btn btn-primary me-2" (click)="doRateUp()">+1</button>
-    <button class="btn btn-primary" (click)="doEdit()">Bearbeiten</button>
+    <button class="btn btn-primary me-2" (click)="doEdit()">Bearbeiten</button>
+    <a class="btn btn-primary" [routerLink]="['/books', book.isbn]">Details</a>
 
     {{ log() }}
 
