@@ -1,9 +1,11 @@
 import { Component } from '@angular/core';
+import { Store } from '@ngrx/store';
 import { take } from 'rxjs';
 
 import { Book } from '../shared/book';
 import { BookRatingService } from '../shared/book-rating.service';
 import { BookStoreService } from '../shared/book-store.service';
+import { selectBooks, selectLoading } from '../store/book.selectors';
 
 @Component({
   selector: 'br-dashboard',
@@ -14,10 +16,12 @@ import { BookStoreService } from '../shared/book-store.service';
 })
 export class DashboardComponent {
 
-  books: Book[] = [];
+  books$ = this.store.select(selectBooks);
+  loading$ = this.store.select(selectLoading);
+
   selectedBook?: Book;
 
-  constructor(public br: BookRatingService, private bs: BookStoreService) {
+  constructor(private store: Store) {
     // this.bs.getBooks().subscribe(books => this.books = books)
   }
 
