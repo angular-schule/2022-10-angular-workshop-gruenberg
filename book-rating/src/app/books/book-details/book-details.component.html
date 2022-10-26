@@ -1,6 +1,6 @@
-<h1>Book</h1>
+<h1>{{ (book$ | async)?.title }}</h1>
 
-<p>{{ book$ | async | json }}</p>
+<p>{{ (book$ | async)?.description }}</p>
 
 <hr>
 
