@@ -1,19 +1,21 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
-import { fromEvent, concatMap, takeUntil } from 'rxjs';
+import { fromEvent, mergeMap, takeUntil } from 'rxjs';
 
 @Component({
   selector: 'rxw-dragdrop',
   templateUrl: './dragdrop.component.html',
-  styleUrls: ['./dragdrop.component.scss']
+  styleUrls: ['./dragdrop.component.scss'],
 })
 export class DragdropComponent implements OnInit {
-
   @ViewChild('target', { static: true }) target!: ElementRef<HTMLElement>;
   targetPosition = [100, 80];
 
   ngOnInit() {
     const mouseMove$ = fromEvent<MouseEvent>(document, 'mousemove');
-    const mouseDown$ = fromEvent<MouseEvent>(this.target.nativeElement, 'mousedown');
+    const mouseDown$ = fromEvent<MouseEvent>(
+      this.target.nativeElement,
+      'mousedown'
+    );
     const mouseUp$ = fromEvent<MouseEvent>(document, 'mouseup');
 
     /**
@@ -28,16 +30,16 @@ export class DragdropComponent implements OnInit {
 
     /******************************/
 
-    
+    mouseDown$
+      .pipe(mergeMap((_: MouseEvent) => mouseMove$.pipe(takeUntil(mouseUp$))))
+      .subscribe((e: MouseEvent) => {
+        this.setTargetPosition(e);
+      });
     /******************************/
   }
 
   private setTargetPosition(event: MouseEvent) {
     const offset = 50;
-    this.targetPosition = [
-      event.pageX - offset,
-      event.pageY - offset
-    ];
+    this.targetPosition = [event.pageX - offset, event.pageY - offset];
   }
-
 }
